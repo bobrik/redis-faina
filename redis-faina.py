@@ -53,10 +53,13 @@ class StatCounter(object):
     def _pretty_print(self, result, title):
         print title
         print '=' * 40
-        max_key_len = max((len(x[0]) for x in result))
-        for key, val in result:
-            key_padding = max(max_key_len - len(key), 0) * ' '
-            print key,key_padding,'\t',val
+        if len(result) > 0:
+            max_key_len = max((len(x[0]) for x in result))
+            for key, val in result:
+                key_padding = max(max_key_len - len(key), 0) * ' '
+                print key,key_padding,'\t',val
+        else:
+            print "n/a"
         print
 
     @staticmethod
